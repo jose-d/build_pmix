@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-22.04
     container: docker://rockylinux:8
     steps:
-      - name: install repos with dependencies
+      - name: install repos with dependencies + prereqs
         run: |
           dnf -y install epel-release
           
@@ -13,6 +13,9 @@ jobs:
         run: |
           dnf -y install hwloc-devel
           
+      - name: enable powertools
+        run: |
+          dnf config-manager --set-enabled powertools
       
       - name: download tarball from upstream repository
         run: |
