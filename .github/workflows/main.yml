@@ -9,13 +9,13 @@ jobs:
         run: |
           dnf -y install epel-release
           
-      - name: install dependencies
-        run: |
-          dnf -y install hwloc-devel
-          
       - name: enable powertools
         run: |
           dnf config-manager --set-enabled powertools
+          
+      - name: install dependencies
+        run: |
+          dnf -y install hwloc-devel
       
       - name: download tarball from upstream repository
         run: |
