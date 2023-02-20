@@ -44,9 +44,14 @@ jobs:
           path: /github/home/rpmbuild/RPMS/x86_64/pmix-*.x86_64.rpm
           
 # dealing with releases
+
+      - name: Create release string from date/timestamp
+        id: date # we need id to be able parse the result as steps.date.outputs.date
+        run: echo "::set-output name=date::$(date +'%Y%m%d_%H%M%S')"
         
       - uses: ncipollo/release-action@v1
         with:
+          tag: ${{ steps.date.outputs.date }}
           artifacts: "*.rpm"          
       
           
