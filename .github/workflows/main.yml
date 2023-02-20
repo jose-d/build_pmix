@@ -52,6 +52,6 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.date.outputs.date }}
-          artifacts: "*.rpm"          
+          artifacts: "*.x86_64.rpm"          
       
           
