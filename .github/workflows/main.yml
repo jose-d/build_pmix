@@ -15,7 +15,7 @@ jobs:
           
       - name: install dependencies
         run: |
-          dnf -y install hwloc-devel
+          dnf -y install hwloc-devel wget munge-devel openssl-devel
       
       - name: download tarball from upstream repository
         run: |
