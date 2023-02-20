@@ -44,31 +44,9 @@ jobs:
           path: /github/home/rpmbuild/RPMS/x86_64/pmix-*.x86_64.rpm
           
 # dealing with releases
-
-      - name: Create release string from date
-        id: date # we need id to be able parse the result as steps.date.outputs.date
-        run: echo "::set-output name=date::$(date +'%Y%m%d_%H%M%S')"
         
-      - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ steps.date.outputs.date }}
-          release_name: Release ${{ steps.date.outputs.date }}
-          draft: false
-          prerelease: false
-          
-      - name: Upload release "asset"
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /github/home/rpmbuild/RPMS/x86_64/pmix-*.x86_64.rpm
-          asset_name: pmix-4.2.3-1.el8.x86_64.rpm
-          asset_content_type: application/octet-stream
-          
+          artifacts: "*.rpm"          
       
           
