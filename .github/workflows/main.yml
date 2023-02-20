@@ -29,3 +29,9 @@ jobs:
         run: |
           rpmbuild --rebuild pmix-4.2.3-1.src.rpm
           
+      - name: upload ipxe.efi as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: pmix-4.2.3-1.el8.x86_64.rpm
+          path: ${{ github.workspace }}/github/home/rpmbuild/RPMS/x86_64/pmix-4.2.3-1.el8.x86_64.rpm
+          
