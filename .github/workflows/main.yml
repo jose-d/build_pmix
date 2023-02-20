@@ -66,7 +66,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /artifacts/pmix-4.2.3-1.el8.x86_64.rpm
+          asset_path: /github/home/rpmbuild/RPMS/x86_64/pmix-*.x86_64.rpm
           asset_name: pmix-4.2.3-1.el8.x86_64.rpm
           asset_content_type: application/octet-stream
           
