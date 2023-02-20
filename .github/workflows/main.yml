@@ -5,10 +5,15 @@ jobs:
     runs-on: ubuntu-22.04
     container: docker://rockylinux:8
     steps:
-#      - name: download tarball from upstream repository
-#        run: |
-#          wget https://github.com/openpmix/openpmix/releases/download/v4.2.3/pmix-4.2.3-1.src.rpm
+      - name: install repos with dependencies
+        run: |
+          dnf -y install epel-release
           
       - name: install dependencies
         run: |
-          dnf -y install epel-release
+          dnf -y install hwloc-devel
+          
+      
+      - name: download tarball from upstream repository
+        run: |
+          wget https://github.com/openpmix/openpmix/releases/download/v4.2.3/pmix-4.2.3-1.src.rpm
