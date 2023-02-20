@@ -19,7 +19,7 @@ jobs:
           
       - name: install dependencies
         run: |
-          dnf -y install hwloc-devel wget munge-devel openssl-devel rpm-build
+          dnf -y install hwloc-devel wget munge-devel openssl-devel rpm-build libevent-devel python3-devel
       
       - name: download tarball from upstream repository
         run: |
