@@ -40,7 +40,6 @@ jobs:
       - name: upload rpm as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: pmix-4.2.3-1.el8.x86_64.rpm
           path: /github/home/rpmbuild/RPMS/x86_64/pmix-*.x86_64.rpm
           
 # dealing with releases
@@ -52,6 +51,6 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.date.outputs.date }}
-          artifacts: pmix-4.2.3-1.el8.x86_64.rpm          
+          artifacts: pmix-*.el8.x86_64.rpm          
       
           
