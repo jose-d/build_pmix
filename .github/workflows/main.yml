@@ -52,6 +52,6 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.date.outputs.date }}
-          artifacts: "pmix-4.2.3-1.el8.x86_64.rpm"          
+          artifacts: pmix-4.2.3-1.el8.x86_64.rpm          
       
           
