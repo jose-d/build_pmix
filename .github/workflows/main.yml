@@ -43,7 +43,7 @@ jobs:
         uses: johnwbyrd/update-release@v1.0.0
         with:
           token: ${secrets.GITHUB_TOKEN}
-          files: /github/home/rpmbuild/RPMS/x86_64/pmix-*.x86_64.rpm 
+          files: /github/home/rpmbuild/RPMS/x86_64/pmix-4.2.3-1.el8.x86_64.rpm
           release: ${github.ref}
           message: message
           body: body
