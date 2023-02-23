@@ -37,20 +37,15 @@ jobs:
         run: |
           rpmbuild --rebuild pmix-*.src.rpm
           
-      - name: upload rpm as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          path: /github/home/rpmbuild/RPMS/x86_64/pmix-*.x86_64.rpm
-          
-# dealing with releases
-
-      - name: Create release string from date/timestamp
-        id: date # we need id to be able parse the result as steps.date.outputs.date
-        run: echo "::set-output name=date::$(date +'%Y%m%d_%H%M%S')"
-        
-      - uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ steps.date.outputs.date }}
-          artifacts: pmix-*.el8.x86_64.rpm          
       
-          
+
+      - name: Update Release
+        uses: johnwbyrd/update-release@v1.0.0
+        with:
+          token: ${secrets.GITHUB_TOKEN}
+          files: /github/home/rpmbuild/RPMS/x86_64/pmix-*.x86_64.rpm 
+          release: ${github.ref}
+          message: message
+          body: body
+          prerelease: false
+          draft: false
